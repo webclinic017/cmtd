@@ -61,6 +61,10 @@ class ExerciciosController extends Controller
             ]);
         }
     }
+
+    public function actionPredict(){
+        
+    }
     
     public function actionLogin(){
         
