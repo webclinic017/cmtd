@@ -1,18 +1,20 @@
 <?php
-
 namespace app\models;
 
 use yii\base\Model;
+use MathPHP\LinearAlgebra\Matrix;
+use MathPHP\LinearAlgebra\MatrixFactory;
+use MathPHP\LinearAlgebra\Vector;
 
-class Predict extends Model{
+class PredictModel extends Model{
     private $matrix;
     private $vector;
-    private $exponent;
-    private $type;
+    public $exponent;
+    public $type;
 
-    public function predict($matrix, $vector, $exponent){ //criar um novo model
+    public function predict($matrix, $vector, $days){ //criar um novo model
         $matrixAux = $matrix;
-        for($exponent; $exponent > 0; $exponent--){ // e para um dia a frente?
+        for($days; $days > 0; $days--){ // e para um dia a frente?
             $matrixAux = $matrixAux->multiply($matrix);
         } 
 
@@ -22,5 +24,4 @@ class Predict extends Model{
         
         echo $matrixAux->vectorMultiply($vector);
     }
-
 }

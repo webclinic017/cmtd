@@ -2,7 +2,7 @@
 /* @var $model app\models\MetodosModel */
 
 use yii\bootstrap\ActiveForm;
-use yii\helpers\Html
+use yii\helpers\Html;
 
 ?>
 
