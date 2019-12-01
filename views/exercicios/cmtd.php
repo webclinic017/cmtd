@@ -5,12 +5,14 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\jui\DatePicker;
-//use yii\helpers\ArrayHelper;
-//use app\models\Paper;
+use yii\helpers\ArrayHelper;
+use app\models\Paper;
 
 ini_set('max_execution_time', 0); //300 seconds = 5 minutes
 ini_set('memory_limit', '-1');
 
+$date = \DateTime::createFromFormat('YmdHis', '20190102230000');
+$date = Paper::toIsoDate($date->getTimestamp());
 ?>
 
 <h2>Previsão por CMTD</h2>
@@ -21,7 +23,7 @@ ini_set('memory_limit', '-1');
 	<?=
 		$form->field($model, 'nome')->dropDownList([
 			['Teste' => 'T']
-			//array_unique(ArrayHelper::map(Paper::find()->all(), 'codneg', 'codneg')) //mudar para pegar do último dia do banco
+			//ArrayHelper::map(Paper::find()->where(['date'=>$date])->all(), 'codneg', 'codneg') //mudar para pegar do último dia do banco
 	])?>
 
 	<?= $form->field($model, 'inicio')->widget(DatePicker::className(), [

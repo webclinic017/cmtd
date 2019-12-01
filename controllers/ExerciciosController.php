@@ -4,6 +4,7 @@ namespace app\controllers;
 use yii\web\Controller;
 use app\models\ConsultaModel;
 use app\models\MetodosModel;
+use app\models\PredictModel;
 
 class ExerciciosController extends Controller
 {
@@ -22,9 +23,11 @@ class ExerciciosController extends Controller
         
         if($model->load($post) && $model->validate()){
             
-            return $this->render('formulario-confirmacao', [
+            return $this->redirect(['predict']);
+
+            /*return $this->render('formulario-confirmacao', [
                 'model' => $model
-            ]);
+            ]);*/
         }
         
         else{
@@ -63,6 +66,12 @@ class ExerciciosController extends Controller
     }
 
     public function actionPredict(){
+        $this->layout = 'clean';
+        $model = new PredictModel;
+
+        return $this->render('predict', [
+            'model' => $model
+        ]);
         
     }
     

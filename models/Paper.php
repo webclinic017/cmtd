@@ -15,7 +15,7 @@ class Paper extends ActiveRecord
 
 
 	public static function CollectionName(){
-		return 'papers';
+		return 'test2';
 	}
 
 	public static function model($className=__CLASS__){

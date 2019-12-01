@@ -2,6 +2,7 @@
 <?php
 
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 ?>
 
@@ -9,9 +10,13 @@ use yii\bootstrap\ActiveForm;
 
 <?= $form->field($model, 'type')->dropDownList([
 		['prompt' => 'Selecione a Ação'],
-		['Anos' => 'A'],
-		['Meses' => 'M'],
-		['Dias' => 'D']
+		['A' => 'Anos'],
+		['M' => 'Meses'],
+		['D' => 'Dias']
 ]) ?>
+
+<div class="form-group">
+			<?= Html::submitButton('Enviar', ['class'=>'btn btn-primary']) ?>
+</div>
 
 <?php $form = ActiveForm::end() ?>

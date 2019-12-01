@@ -12,6 +12,15 @@ class PredictModel extends Model{
     public $exponent;
     public $type;
 
+    public function attributeLabels()
+    {
+        return [
+            'type' => 'Predição em:',
+            'exponent' => 'Prever para:'
+            /*'final' => 'Data Final'*/
+        ];
+    }
+
     public function predict($matrix, $vector, $days){ //criar um novo model
         $matrixAux = $matrix;
         for($days; $days > 0; $days--){ // e para um dia a frente?
