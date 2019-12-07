@@ -1,14 +1,17 @@
-
 <?php
+/* @var $predictModel app\models\PredictModel */
+/* @var $consultaModel app\models\ConsultaModel */
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 ?>
 
-<?php $form = ActiveForm::begin() ?>
+<?php $form = ActiveForm::begin(['layout' => 'horizontal']) ?>
 
-<?= $form->field($model, 'type')->dropDownList([
+<?= $form->field($predictModel, 'exponent')->textInput([]) ?>
+
+<?= $form->field($predictModel, 'type')->dropDownList([
 		['prompt' => 'Selecione a Ação'],
 		['A' => 'Anos'],
 		['M' => 'Meses'],
@@ -16,7 +19,9 @@ use yii\helpers\Html;
 ]) ?>
 
 <div class="form-group">
-			<?= Html::submitButton('Enviar', ['class'=>'btn btn-primary']) ?>
+	<div class="col-lg-offset-2">
+		<?= Html::submitButton('Enviar', ['class'=>'btn btn-primary']) ?>
+	</div>
 </div>
 
 <?php $form = ActiveForm::end() ?>

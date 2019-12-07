@@ -11,7 +11,7 @@ use app\models\Paper;
 ini_set('max_execution_time', 0); //300 seconds = 5 minutes
 ini_set('memory_limit', '-1');
 
-$date = \DateTime::createFromFormat('YmdHis', '20190102230000');
+$date = \DateTime::createFromFormat('YmdHis', '20190102000000');
 $date = Paper::toIsoDate($date->getTimestamp());
 ?>
 

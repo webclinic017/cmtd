@@ -18,22 +18,22 @@ class ExerciciosController extends Controller
    public function actionCmtd(){
        $this->layout = 'clean';
        
-        $model = new ConsultaModel;
+        $model2 = new ConsultaModel;
+        $model = new PredictModel;
         $post = $_POST;
         
-        if($model->load($post) && $model->validate()){
+        if($model2->load($post) && $model2->validate()){
             
-            return $this->redirect(['predict']);
-
-            /*return $this->render('formulario-confirmacao', [
-                'model' => $model
-            ]);*/
+            return $this->render('predict', [
+                'predictModel' => $model,
+                'consultaModel' => $model2
+            ]);
         }
         
         else{
             
             return $this->render('cmtd', [
-                'model' => $model
+                'model' => $model2
             ]);
        }
     }
@@ -63,16 +63,6 @@ class ExerciciosController extends Controller
                 'model' => $metodosModel
             ]);
         }
-    }
-
-    public function actionPredict(){
-        $this->layout = 'clean';
-        $model = new PredictModel;
-
-        return $this->render('predict', [
-            'model' => $model
-        ]);
-        
     }
     
     public function actionLogin(){
