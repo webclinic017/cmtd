@@ -12,10 +12,9 @@ use yii\helpers\Html;
 <?= $form->field($predictModel, 'exponent')->textInput([]) ?>
 
 <?= $form->field($predictModel, 'type')->dropDownList([
-		['prompt' => 'Selecione a Ação'],
-		['A' => 'Anos'],
-		['M' => 'Meses'],
-		['D' => 'Dias']
+		'A' => 'Anos',
+		'M' => 'Meses',
+		'D' => 'Dias'
 ]) ?>
 
 <div class="form-group">

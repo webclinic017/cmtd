@@ -1,4 +1,6 @@
 <?php
+/* @var $model app\models\PredictModel */
+
 use MathPHP\LinearAlgebra\Matrix;
 use MathPHP\LinearAlgebra\MatrixFactory;
 use MathPHP\LinearAlgebra\Vector;
@@ -12,5 +14,6 @@ $m = [
 $matrix = MatrixFactory::create($m);
 
 $vector = new Vector([1, 0, 0]);
+?>
 
-ConsultaModel::predict($matrix, $vector, 1); //criar uma nova view depois
+<h3>Resultado: <?=$model->predict($matrix, $vector, 1)?></h3>

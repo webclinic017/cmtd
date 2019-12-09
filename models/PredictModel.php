@@ -12,25 +12,39 @@ class PredictModel extends Model{
     public $exponent;
     public $type;
 
+    public function rules()
+    {
+        return[
+            [['exponent', 'type'], 'required'],
+            ['exponent', 'integer']
+        ];
+    }
+
     public function attributeLabels()
     {
         return [
             'type' => 'Predição em:',
             'exponent' => 'Prever para:'
-            /*'final' => 'Data Final'*/
         ];
     }
 
-    public function predict($matrix, $vector, $days){ //criar um novo model
-        $matrixAux = $matrix;
-        for($days; $days > 0; $days--){ // e para um dia a frente?
-            $matrixAux = $matrixAux->multiply($matrix);
-        } 
+    public function predict($matrix, $vector, $exponent){
 
-        /*for($i = 0; $i < 3; $i++)
-            for($j = 0; $j < 3; $j++)
-                echo $matrixAux[$i][$j].' ';*/ //visualização da matrix auxiliar
-        
-        echo $matrixAux->vectorMultiply($vector);
+        if($exponent == 1){
+            return $matrix->vectorMultiply($vector);
+        }
+
+        else{
+            $matrixAux = $matrix;
+            for($exponent-=1; $exponent > 0; $exponent--){ // e para um dia a frente?
+                $matrixAux = $matrixAux->multiply($matrix);
+            } 
+
+            /*for($i = 0; $i < 3; $i++)
+                for($j = 0; $j < 3; $j++)
+                    echo $matrixAux[$i][$j].' ';*/ //visualização da matrix auxiliar
+            
+            return $matrixAux->vectorMultiply($vector);
+        }
     }
 }

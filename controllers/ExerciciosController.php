@@ -30,6 +30,12 @@ class ExerciciosController extends Controller
             ]);
         }
         
+        elseif($model->load($post) && $model->validate()){
+            return $this->render('predict-result', [
+                'model' => $model
+            ]);
+        }
+
         else{
             
             return $this->render('cmtd', [

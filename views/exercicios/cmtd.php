@@ -11,8 +11,8 @@ use app\models\Paper;
 ini_set('max_execution_time', 0); //300 seconds = 5 minutes
 ini_set('memory_limit', '-1');
 
-$date = \DateTime::createFromFormat('YmdHis', '20190102000000');
-$date = Paper::toIsoDate($date->getTimestamp());
+$data = Paper::find()->where(['codneg' => 'AALR3'])->one();
+
 ?>
 
 <h2>Previsão por CMTD</h2>
@@ -20,11 +20,10 @@ $date = Paper::toIsoDate($date->getTimestamp());
 
 <?php $form = ActiveForm::begin(['layout' => 'horizontal']) ?>
 
-	<?=
-		$form->field($model, 'nome')->dropDownList([
-			['Teste' => 'T']
-			//ArrayHelper::map(Paper::find()->where(['date'=>$date])->all(), 'codneg', 'codneg') //mudar para pegar do último dia do banco
-	])?>
+	<?= $form->field($model, 'nome')->dropDownList(
+			//['Teste' => 'T']
+			ArrayHelper::map(Paper::find()->where(['=', 'date', $data->date])->all(), 'codneg', 'codneg') //mudar para pegar do último dia do banco
+	)?>
 
 	<?= $form->field($model, 'inicio')->widget(DatePicker::className(), [
 	    'language' => 'pt',
