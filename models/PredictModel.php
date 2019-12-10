@@ -36,7 +36,7 @@ class PredictModel extends Model{
 
         else{
             $matrixAux = $matrix;
-            for($exponent-=1; $exponent > 0; $exponent--){ // e para um dia a frente?
+            for($exponent-=1; $exponent > 0; $exponent--){
                 $matrixAux = $matrixAux->multiply($matrix);
             } 
 

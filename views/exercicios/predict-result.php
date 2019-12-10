@@ -16,4 +16,4 @@ $matrix = MatrixFactory::create($m);
 $vector = new Vector([1, 0, 0]);
 ?>
 
-<h3>Resultado: <?=$model->predict($matrix, $vector, 1)?></h3>
+<h3>Resultado: <?=$model->predict($matrix, $vector, $model->exponent)?></h3>
