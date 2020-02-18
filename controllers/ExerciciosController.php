@@ -5,6 +5,7 @@ use yii\web\Controller;
 use app\models\ConsultaModel;
 use app\models\MetodosModel;
 use app\models\PredictModel;
+use app\models\PredicttModel;
 
 class ExerciciosController extends Controller
 {
@@ -15,31 +16,25 @@ class ExerciciosController extends Controller
         return $this->render('home');
     }
     
-   public function actionCmtd(){
+   public function actionPredict(){
        $this->layout = 'clean';
        
-        $model2 = new ConsultaModel;
-        $model = new PredictModel;
+        $model = new ConsultaModel;
+        $model2 = new PredicttModel;
         $post = $_POST;
         
-        if($model2->load($post) && $model2->validate()){
-            
-            return $this->render('predict', [
-                'predictModel' => $model,
-                'consultaModel' => $model2
-            ]);
-        }
-        
-        elseif($model->load($post) && $model->validate()){
-            return $this->render('predict-result', [
-                'model' => $model
+        if($model->load($post) && $model->validate()){
+            return $this->render('predicttest', [
+                'predicttModel' => $model2,
+                'consultaModel' => $model
             ]);
         }
 
         else{
-            
-            return $this->render('cmtd', [
-                'model' => $model2
+
+            return $this->render('predict', [
+                'consultaModel' => $model,
+                'predicttModel' => $model2
             ]);
        }
     }
@@ -54,7 +49,7 @@ class ExerciciosController extends Controller
            
             if($metodosModel->metodo == 'CMTD'){
                 
-                return $this->redirect(['cmtd']);
+                return $this->redirect(['predict']);
             }
             
             else{

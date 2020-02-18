@@ -29,5 +29,15 @@ class Paper extends ActiveRecord
 
 	public function toIsoDate($timestamp){
         return new \MongoDB\BSON\UTCDateTime($timestamp * 1000);
-    }
+	}
+	
+	public function toDate($date){
+		$date = \DateTime::createFromFormat('U', $date);
+        $date = intval($date->format('U'));
+        $date /= 1000;
+        $date = \DateTime::createFromFormat('U', (string)$date);
+		$date = \DateTime::createFromFormat('d/m/Y H:i:s', $date->format('d/m/Y H:i:s'));
+		
+		return $date;
+	}
 }
