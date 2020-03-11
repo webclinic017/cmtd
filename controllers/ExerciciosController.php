@@ -5,7 +5,6 @@ use yii\web\Controller;
 use app\models\ConsultaModel;
 use app\models\MetodosModel;
 use app\models\PredictModel;
-use app\models\PredicttModel;
 
 class ExerciciosController extends Controller
 {
@@ -20,12 +19,12 @@ class ExerciciosController extends Controller
        $this->layout = 'clean';
        
         $model = new ConsultaModel;
-        $model2 = new PredicttModel;
+        $model2 = new PredictModel;
         $post = $_POST;
         
-        if($model->load($post) && $model->validate()){
+        if($model->load($post) && $model->validate() /*&& $model2->load($post) && $model2->validate()*/){
             return $this->render('predicttest', [
-                'predicttModel' => $model2,
+                'predictModel' => $model2,
                 'consultaModel' => $model
             ]);
         }
@@ -33,8 +32,8 @@ class ExerciciosController extends Controller
         else{
 
             return $this->render('predict', [
-                'consultaModel' => $model,
-                'predicttModel' => $model2
+                'consultaModel' => $model
+                /*'predicttModel' => $model2*/
             ]);
        }
     }

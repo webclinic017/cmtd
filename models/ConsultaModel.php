@@ -7,13 +7,15 @@ class ConsultaModel extends Model
 {
     public $nome;
     public $inicio;
-    //public $final;
+    public $final;
+    public $states_number;
     
     public function rules(){
         return [
-        [['nome', 'inicio'/*, 'final'*/], 'required'],
-        [['inicio'/*, 'final'*/], 'date', 'format'=>'dd/mm/yyyy']
-            //['final', 'compare', 'compareValue' => 'inicio', 'operator' => '>']
+        [['nome', 'inicio', 'final', 'states_number'], 'required'],
+        ['states_number', 'integer'],
+        [['inicio', 'final'], 'date', 'format'=>'dd/mm/yyyy']
+        //['final', 'compare', 'compareValue' => 'inicio', 'operator' => '>']
         ];
         
     }
@@ -22,8 +24,9 @@ class ConsultaModel extends Model
     {
         return [
             'nome' => 'Nome',
-            'inicio' => 'Data Inicial'
-            /*'final' => 'Data Final'*/
+            'inicio' => 'Data Inicial',
+            'final' => 'Data Final',
+            'states_number' => 'Quantidade de intervalos'
         ];
     }
 

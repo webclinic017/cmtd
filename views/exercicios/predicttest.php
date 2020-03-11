@@ -1,7 +1,7 @@
 <?php
-/* @var $predicttModel app\models\PredicttModel */
+/* @var $predictModel app\models\PredictModel */
 /* @var $consultaModel app\models\ConsultaModel */
 
 ?>
 
-<h3><?=$predicttModel->predict($consultaModel->inicio, $consultaModel->nome)?></h3>
+<h3><?=$predictModel->predict($consultaModel->inicio,  $consultaModel->nome, $consultaModel->final, $consultaModel->states_number)?></h3>
